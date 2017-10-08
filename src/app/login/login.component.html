@@ -1,0 +1,22 @@
+<div class="row form">
+    <div class="col-md-12">
+        <h1>User Login</h1><br>
+        <form novalidate [formGroup]="login_form"  (keydown)="naventer($event)">
+            <div class="form-group">
+                <label for="email">Username<span class="asterik">*</span></label>
+                <input type="email" class="form-control" id="email" formControlName="username" (keyup)="auth()">
+                <div [hidden]="this.login_form.controls.username.valid || this.login_form.controls.username.pristine" class="alert alert-danger"><span>username is required</span></div>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password<span class="asterik">*</span></label>
+                <input type="password" class="form-control" id="pwd" formControlName="password" (keyup)="auth()">
+                <div [hidden]="this.login_form.controls.password.valid || this.login_form.controls.password.pristine" class="alert alert-danger"><span>password is required</span></div>
+            </div>
+            <div [hidden]="authMsg" class="alert alert-danger"><span>Username or Password is incorrect!</span></div>
+            
+            <button type="button" (click)="onsubmit()" class="btn btn-primary" id="submit" [disabled]="!submit" routerLink="/welcome">Login</button>
+            <button type="reset" class="btn btn-primary" (click)="reset()">Reset</button>
+            <a id="forgot" routerLink="/forgot">Forgot Password?</a>
+        </form>
+    </div>
+</div>
